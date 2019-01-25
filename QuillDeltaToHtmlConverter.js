@@ -182,13 +182,7 @@ const DEFAULT_INLINE_STYLES = {
 };
 const url = {
     sanitize(str) {
-        let val = str;
-        val = val.replace(/^\s*/gm, '');
-        let whiteList = /^\s*((|https?|s?ftp|file|blob|mailto|tel):|#|\/|data:image\/)/;
-        if (whiteList.test(val)) {
-            return val;
-        }
-        return 'unsafe:' + val;
+        return str.replace(/^\s*/gm, '');
     },
     encodeLink(str) {
         let linkMaps = encodeMappings(EncodeTarget.Url);
