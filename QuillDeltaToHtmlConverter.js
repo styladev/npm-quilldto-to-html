@@ -159,13 +159,15 @@ const DEFAULT_INLINE_FONTS = {
     serif: 'font-family: Georgia, Times New Roman, serif',
     monospace: 'font-family: Monaco, Courier New, monospace'
 };
+const DEFAULT_FONT_SIZE_STYLES = {
+    small: 'font-size: 0.75em',
+    large: 'font-size: 1.5em',
+    huge: 'font-size: 2.5em'
+};
 const DEFAULT_INLINE_STYLES = {
+    lineheight: (value) => 'line-height:' + value,
     font: (value) => DEFAULT_INLINE_FONTS[value] || ('font-family:' + value),
-    size: {
-        'small': 'font-size: 0.75em',
-        'large': 'font-size: 1.5em',
-        'huge': 'font-size: 2.5em'
-    },
+    size: (value) => DEFAULT_FONT_SIZE_STYLES[value] || ('font-size:' + value),
     indent: (value, op) => {
         var indentSize = parseInt(value, 10) * 3;
         var side = op.attributes['direction'] === 'rtl' ? 'right' : 'left';
@@ -401,7 +403,7 @@ class OpToHtmlConverter {
     }
     getCssStyles() {
         var attrs = this.op.attributes;
-        var propsArr = [['color']];
+        var propsArr = [['color'], ['size'], ['lineheight']];
         if (!!this.options.inlineStyles || !this.options.allowBackgroundClasses) {
             propsArr.push(['background', 'background-color']);
         }
@@ -411,7 +413,6 @@ class OpToHtmlConverter {
                 ['align', 'text-align'],
                 ['direction'],
                 ['font', 'font-family'],
-                ['size']
             ]);
         }
         return propsArr
