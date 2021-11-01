@@ -443,7 +443,14 @@ class OpToHtmlConverter {
         var classes = this.getCssClasses();
         var tagAttrs = classes.length ? [makeAttr('class', classes.join(' '))] : [];
         if (this.op.isImage()) {
-            this.op.attributes.width && (tagAttrs = tagAttrs.concat(makeAttr('width', this.op.attributes.width)));
+            const {width, alt} = this.op.attributes;
+
+            if (width) {
+                tagAttrs = tagAttrs.concat(makeAttr('width', width));
+            }
+            if (alt || alt === '') {
+                tagAttrs = tagAttrs.concat(makeAttr('alt', alt));
+            }
             return tagAttrs.concat(makeAttr('src', url.sanitize(this.op.insert.value + '') + ''));
         }
         if (this.op.isACheckList()) {
