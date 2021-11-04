@@ -1,6 +1,6 @@
 {
   "name": "@styla/quilldto-to-html",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "main": "QuillDeltaToHtmlConverter.js",
   "repository": "git@github.com:styladev/quill-delta-to-html-parcel.git",
   "author": "(c) 2018. Styla GmbH. All rights reserved.",
