@@ -166,6 +166,7 @@ const DEFAULT_FONT_SIZE_STYLES = {
 };
 const DEFAULT_INLINE_STYLES = {
     lineheight: (value) => 'line-height:' + value,
+    fontFamily: (value) => 'font-family:' + value,
     font: (value) => DEFAULT_INLINE_FONTS[value] || ('font-family:' + value),
     size: (value) => DEFAULT_FONT_SIZE_STYLES[value] || ('font-size:' + value),
     indent: (value, op) => {
@@ -403,7 +404,7 @@ class OpToHtmlConverter {
     }
     getCssStyles() {
         var attrs = this.op.attributes;
-        var propsArr = [['color'], ['size'], ['lineheight']];
+        var propsArr = [['color'], ['size'], ['lineheight'], ['fontFamily']];
         if (!!this.options.inlineStyles || !this.options.allowBackgroundClasses) {
             propsArr.push(['background', 'background-color']);
         }
