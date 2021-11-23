@@ -166,7 +166,7 @@ const DEFAULT_FONT_SIZE_STYLES = {
 };
 const DEFAULT_INLINE_STYLES = {
     lineheight: (value) => 'line-height:' + value,
-    fontFamily: (value) => 'font-family:' + value,
+    fontFamily: (value) => 'font-family:' + value.replace(/"/g, '&quot;'),
     font: (value) => DEFAULT_INLINE_FONTS[value] || ('font-family:' + value),
     size: (value) => DEFAULT_FONT_SIZE_STYLES[value] || ('font-size:' + value),
     indent: (value, op) => {
